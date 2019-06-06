@@ -1,6 +1,7 @@
 package com.briup.apps.app02.web.Controller;
 
 import com.briup.apps.app02.bean.Course;
+import com.briup.apps.app02.bean.extend.CourseExtend;
 import com.briup.apps.app02.service.ICourseService;
 import com.briup.apps.app02.utils.Message;
 import com.briup.apps.app02.utils.MessageUtil;
@@ -28,6 +29,12 @@ public class CourseController {
         return MessageUtil.success("success", course);
     }
 
+    @ApiOperation("查询所有课程中有任课教师的课程")
+    @GetMapping("findAllWithTeacher")
+    public Message findAllTeacher(){
+        List<CourseExtend> list=courseService.findAllWithTeacher();
+        return MessageUtil.success("success", list);
+    }
 
     @GetMapping("findAll")
     public Message findAll(){
@@ -40,6 +47,5 @@ public class CourseController {
         List<Course> list= courseService.query(course);
         return MessageUtil.success("success", list);
     }
-
 
 }
