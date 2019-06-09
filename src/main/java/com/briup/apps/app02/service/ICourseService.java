@@ -13,4 +13,10 @@ public interface ICourseService {
     List<Course> query(Course course);
 
     List<CourseExtend> findAllWithTeacher();
+
+    void saveOrUpdate(Course course) throws Exception;
+
+    void delete(long id) throws Exception;
+
+
 }

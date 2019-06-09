@@ -48,4 +48,28 @@ public class CourseController {
         return MessageUtil.success("success", list);
     }
 
+    @GetMapping("saveOrUpdate")
+    public Message saveOrUpdate(Course course){
+        try{
+            courseService.saveOrUpdate(course);
+            return MessageUtil.success("success");
+        }catch (Exception e){
+            e.printStackTrace();
+            return MessageUtil.error(e.getMessage());
+        }
+    }
+
+    @GetMapping("delete")
+    public Message delete(@ApiParam(value = "主键", required = true)
+                              @RequestParam(value = "id") long id){
+        try{
+            courseService.delete(id);
+            return MessageUtil.success("success");
+        }catch (Exception e){
+            e.printStackTrace();
+            return MessageUtil.error(e.getMessage());
+        }
+
+    }
+
 }

@@ -38,5 +38,24 @@ public class CourseServiceImpl implements ICourseService {
         return courseExtendMapper.selectAll();
     }
 
+    @Override
+    public void saveOrUpdate(Course course) throws Exception{
+        if(course.getId() == null){
+            courseMapper.insert(course);
+        } else {
+            courseMapper.update(course);
+        }
+    }
+
+    @Override
+    public void delete(long id) throws Exception{
+        Course course = courseMapper.findById(id);
+        if(course == null){
+            throw new Exception("要删除的用户不存在");
+        } else {
+            courseMapper.deleteByPrimaryKey(id);
+        }
+    }
+
 
 }

@@ -26,4 +26,23 @@
         </where>
     </select>
 
+    <insert id="insert">
+        insert into sms_course values (null, #{name}, #{description}, #{credit}, #{teacher_id})
+    </insert>
+
+    <update id="update">
+        update sms_course
+        <set>
+            <if test="name !=null">name=#{name} ,</if>
+            <if test="description !=null">description=#{description}  ,</if>
+            <if test="credit !=null">credit=#{credit}  ,</if>
+            <if test="teacher_id !=null">teacher_id#{teacher_id}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteByPrimaryKey">
+        delete from sms_course where id=#{id}
+    </delete>
+
 </mapper>

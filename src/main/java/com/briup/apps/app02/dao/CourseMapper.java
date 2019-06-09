@@ -12,4 +12,10 @@ public interface CourseMapper {
 
     List<Course> query(Course course);
 
+    void insert(Course course);
+
+    void update(Course course);
+
+    void deleteByPrimaryKey(long id);
+
 }
